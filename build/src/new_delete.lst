@@ -1,0 +1,475 @@
+GAS LISTING /tmp/cczVEagQ.s 			page 1
+
+
+   1              		.file	"new_delete.cpp"
+   2              		.option pic
+   3              		.option norelax
+   4              		.text
+   5              	.Ltext0:
+   6              		.align	2
+   7              		.globl	_Znwm
+   9              	_Znwm:
+  10              	.LFB0:
+  11              		.file 1 "src/new_delete.cpp"
+   1:src/new_delete.cpp **** //
+   2:src/new_delete.cpp **** // Created by os on 7/11/26.
+   3:src/new_delete.cpp **** //
+   4:src/new_delete.cpp **** 
+   5:src/new_delete.cpp **** #include "../h/MemoryAllocator.hpp"
+   6:src/new_delete.cpp **** #include "../lib/hw.h"
+   7:src/new_delete.cpp **** 
+   8:src/new_delete.cpp **** void* operator new(size_t size) {
+  12              		.loc 1 8 33
+  13              		.cfi_startproc
+  14              	.LVL0:
+  15 0000 130101FF 		addi	sp,sp,-16
+  16              		.cfi_def_cfa_offset 16
+  17 0004 23341100 		sd	ra,8(sp)
+  18 0008 23308100 		sd	s0,0(sp)
+  19              		.cfi_offset 1, -8
+  20              		.cfi_offset 8, -16
+  21 000c 13040101 		addi	s0,sp,16
+  22              		.cfi_def_cfa 8, 0
+   9:src/new_delete.cpp ****     return MemoryAllocator::mem_alloc(size);
+  23              		.loc 1 9 5
+  24              		.loc 1 9 38 is_stmt 0
+  25 0010 97000000 		call	_ZN15MemoryAllocator9mem_allocEm@plt
+  25      E7800000 
+  26              	.LVL1:
+  10:src/new_delete.cpp **** }
+  27              		.loc 1 10 1
+  28 0018 83308100 		ld	ra,8(sp)
+  29              		.cfi_restore 1
+  30 001c 03340100 		ld	s0,0(sp)
+  31              		.cfi_restore 8
+  32              		.cfi_def_cfa 2, 16
+  33 0020 13010101 		addi	sp,sp,16
+  34              		.cfi_def_cfa_offset 0
+  35 0024 67800000 		jr	ra
+  36              		.cfi_endproc
+  37              	.LFE0:
+  39              		.align	2
+  40              		.globl	_Znam
+  42              	_Znam:
+  43              	.LFB1:
+  11:src/new_delete.cpp **** 
+  12:src/new_delete.cpp **** void* operator new[](size_t size) {
+  44              		.loc 1 12 35 is_stmt 1
+  45              		.cfi_startproc
+  46              	.LVL2:
+  47 0028 130101FF 		addi	sp,sp,-16
+GAS LISTING /tmp/cczVEagQ.s 			page 2
+
+
+  48              		.cfi_def_cfa_offset 16
+  49 002c 23341100 		sd	ra,8(sp)
+  50 0030 23308100 		sd	s0,0(sp)
+  51              		.cfi_offset 1, -8
+  52              		.cfi_offset 8, -16
+  53 0034 13040101 		addi	s0,sp,16
+  54              		.cfi_def_cfa 8, 0
+  13:src/new_delete.cpp ****     return MemoryAllocator::mem_alloc(size);
+  55              		.loc 1 13 5
+  56              		.loc 1 13 38 is_stmt 0
+  57 0038 97000000 		call	_ZN15MemoryAllocator9mem_allocEm@plt
+  57      E7800000 
+  58              	.LVL3:
+  14:src/new_delete.cpp **** }
+  59              		.loc 1 14 1
+  60 0040 83308100 		ld	ra,8(sp)
+  61              		.cfi_restore 1
+  62 0044 03340100 		ld	s0,0(sp)
+  63              		.cfi_restore 8
+  64              		.cfi_def_cfa 2, 16
+  65 0048 13010101 		addi	sp,sp,16
+  66              		.cfi_def_cfa_offset 0
+  67 004c 67800000 		jr	ra
+  68              		.cfi_endproc
+  69              	.LFE1:
+  71              		.align	2
+  72              		.globl	_ZdlPv
+  74              	_ZdlPv:
+  75              	.LFB2:
+  15:src/new_delete.cpp **** 
+  16:src/new_delete.cpp **** void operator delete(void* ptr) noexcept {
+  76              		.loc 1 16 42 is_stmt 1
+  77              		.cfi_startproc
+  78              		.cfi_personality 0x9b,DW.ref.__gxx_personality_v0
+  79              		.cfi_lsda 0x1b,.LLSDA2
+  80              	.LVL4:
+  81 0050 130101FF 		addi	sp,sp,-16
+  82              		.cfi_def_cfa_offset 16
+  83 0054 23341100 		sd	ra,8(sp)
+  84 0058 23308100 		sd	s0,0(sp)
+  85              		.cfi_offset 1, -8
+  86              		.cfi_offset 8, -16
+  87 005c 13040101 		addi	s0,sp,16
+  88              		.cfi_def_cfa 8, 0
+  17:src/new_delete.cpp ****     MemoryAllocator::mem_free(ptr);
+  89              		.loc 1 17 5
+  90              		.loc 1 17 30 is_stmt 0
+  91 0060 97000000 		call	_ZN15MemoryAllocator8mem_freeEPv@plt
+  91      E7800000 
+  92              	.LVL5:
+  18:src/new_delete.cpp **** }
+  93              		.loc 1 18 1
+  94 0068 83308100 		ld	ra,8(sp)
+  95              		.cfi_restore 1
+  96 006c 03340100 		ld	s0,0(sp)
+  97              		.cfi_restore 8
+  98              		.cfi_def_cfa 2, 16
+GAS LISTING /tmp/cczVEagQ.s 			page 3
+
+
+  99 0070 13010101 		addi	sp,sp,16
+ 100              		.cfi_def_cfa_offset 0
+ 101 0074 67800000 		jr	ra
+ 102              		.cfi_endproc
+ 103              	.LFE2:
+ 104              		.globl	__gxx_personality_v0
+ 105              		.section	.gcc_except_table,"a",@progbits
+ 106              	.LLSDA2:
+ 107 0000 FF       		.byte	0xff
+ 108 0001 FF       		.byte	0xff
+ 109 0002 03       		.byte	0x3
+ 110 0003 00       		.byte	0
+ 111              		.text
+ 113              		.align	2
+ 114              		.globl	_ZdaPv
+ 116              	_ZdaPv:
+ 117              	.LFB3:
+  19:src/new_delete.cpp **** 
+  20:src/new_delete.cpp **** void operator delete[](void* ptr) noexcept {
+ 118              		.loc 1 20 44 is_stmt 1
+ 119              		.cfi_startproc
+ 120              		.cfi_personality 0x9b,DW.ref.__gxx_personality_v0
+ 121              		.cfi_lsda 0x1b,.LLSDA3
+ 122              	.LVL6:
+ 123 0078 130101FF 		addi	sp,sp,-16
+ 124              		.cfi_def_cfa_offset 16
+ 125 007c 23341100 		sd	ra,8(sp)
+ 126 0080 23308100 		sd	s0,0(sp)
+ 127              		.cfi_offset 1, -8
+ 128              		.cfi_offset 8, -16
+ 129 0084 13040101 		addi	s0,sp,16
+ 130              		.cfi_def_cfa 8, 0
+  21:src/new_delete.cpp ****     MemoryAllocator::mem_free(ptr);
+ 131              		.loc 1 21 5
+ 132              		.loc 1 21 30 is_stmt 0
+ 133 0088 97000000 		call	_ZN15MemoryAllocator8mem_freeEPv@plt
+ 133      E7800000 
+ 134              	.LVL7:
+  22:src/new_delete.cpp **** }
+ 135              		.loc 1 22 1
+ 136 0090 83308100 		ld	ra,8(sp)
+ 137              		.cfi_restore 1
+ 138 0094 03340100 		ld	s0,0(sp)
+ 139              		.cfi_restore 8
+ 140              		.cfi_def_cfa 2, 16
+ 141 0098 13010101 		addi	sp,sp,16
+ 142              		.cfi_def_cfa_offset 0
+ 143 009c 67800000 		jr	ra
+ 144              		.cfi_endproc
+ 145              	.LFE3:
+ 146              		.section	.gcc_except_table
+ 147              	.LLSDA3:
+ 148 0004 FF       		.byte	0xff
+ 149 0005 FF       		.byte	0xff
+ 150 0006 03       		.byte	0x3
+ 151 0007 00       		.byte	0
+ 152              		.text
+GAS LISTING /tmp/cczVEagQ.s 			page 4
+
+
+ 154              		.align	2
+ 155              		.globl	_ZdlPvm
+ 157              	_ZdlPvm:
+ 158              	.LFB4:
+  23:src/new_delete.cpp **** 
+  24:src/new_delete.cpp **** void operator delete(void* ptr, size_t) noexcept {
+ 159              		.loc 1 24 50 is_stmt 1
+ 160              		.cfi_startproc
+ 161              		.cfi_personality 0x9b,DW.ref.__gxx_personality_v0
+ 162              		.cfi_lsda 0x1b,.LLSDA4
+ 163              	.LVL8:
+ 164 00a0 130101FF 		addi	sp,sp,-16
+ 165              		.cfi_def_cfa_offset 16
+ 166 00a4 23341100 		sd	ra,8(sp)
+ 167 00a8 23308100 		sd	s0,0(sp)
+ 168              		.cfi_offset 1, -8
+ 169              		.cfi_offset 8, -16
+ 170 00ac 13040101 		addi	s0,sp,16
+ 171              		.cfi_def_cfa 8, 0
+  25:src/new_delete.cpp ****     MemoryAllocator::mem_free(ptr);
+ 172              		.loc 1 25 5
+ 173              		.loc 1 25 30 is_stmt 0
+ 174 00b0 97000000 		call	_ZN15MemoryAllocator8mem_freeEPv@plt
+ 174      E7800000 
+ 175              	.LVL9:
+  26:src/new_delete.cpp **** }
+ 176              		.loc 1 26 1
+ 177 00b8 83308100 		ld	ra,8(sp)
+ 178              		.cfi_restore 1
+ 179 00bc 03340100 		ld	s0,0(sp)
+ 180              		.cfi_restore 8
+ 181              		.cfi_def_cfa 2, 16
+ 182 00c0 13010101 		addi	sp,sp,16
+ 183              		.cfi_def_cfa_offset 0
+ 184 00c4 67800000 		jr	ra
+ 185              		.cfi_endproc
+ 186              	.LFE4:
+ 187              		.section	.gcc_except_table
+ 188              	.LLSDA4:
+ 189 0008 FF       		.byte	0xff
+ 190 0009 FF       		.byte	0xff
+ 191 000a 03       		.byte	0x3
+ 192 000b 00       		.byte	0
+ 193              		.text
+ 195              		.align	2
+ 196              		.globl	_ZdaPvm
+ 198              	_ZdaPvm:
+ 199              	.LFB5:
+  27:src/new_delete.cpp **** 
+  28:src/new_delete.cpp **** void operator delete[](void* ptr, size_t) noexcept {
+ 200              		.loc 1 28 52 is_stmt 1
+ 201              		.cfi_startproc
+ 202              		.cfi_personality 0x9b,DW.ref.__gxx_personality_v0
+ 203              		.cfi_lsda 0x1b,.LLSDA5
+ 204              	.LVL10:
+ 205 00c8 130101FF 		addi	sp,sp,-16
+ 206              		.cfi_def_cfa_offset 16
+GAS LISTING /tmp/cczVEagQ.s 			page 5
+
+
+ 207 00cc 23341100 		sd	ra,8(sp)
+ 208 00d0 23308100 		sd	s0,0(sp)
+ 209              		.cfi_offset 1, -8
+ 210              		.cfi_offset 8, -16
+ 211 00d4 13040101 		addi	s0,sp,16
+ 212              		.cfi_def_cfa 8, 0
+  29:src/new_delete.cpp ****     MemoryAllocator::mem_free(ptr);
+ 213              		.loc 1 29 5
+ 214              		.loc 1 29 30 is_stmt 0
+ 215 00d8 97000000 		call	_ZN15MemoryAllocator8mem_freeEPv@plt
+ 215      E7800000 
+ 216              	.LVL11:
+  30:src/new_delete.cpp **** }...
+ 217              		.loc 1 30 1
+ 218 00e0 83308100 		ld	ra,8(sp)
+ 219              		.cfi_restore 1
+ 220 00e4 03340100 		ld	s0,0(sp)
+ 221              		.cfi_restore 8
+ 222              		.cfi_def_cfa 2, 16
+ 223 00e8 13010101 		addi	sp,sp,16
+ 224              		.cfi_def_cfa_offset 0
+ 225 00ec 67800000 		jr	ra
+ 226              		.cfi_endproc
+ 227              	.LFE5:
+ 228              		.section	.gcc_except_table
+ 229              	.LLSDA5:
+ 230 000c FF       		.byte	0xff
+ 231 000d FF       		.byte	0xff
+ 232 000e 03       		.byte	0x3
+ 233 000f 00       		.byte	0
+ 234              		.text
+ 236              	.Letext0:
+ 237              		.file 2 "src/../h/../lib/hw.h"
+ 238              		.file 3 "src/../h/MemoryAllocator.hpp"
+ 1270              		.align	3
+ 1273              	DW.ref.__gxx_personality_v0:
+ 1274 0000 00000000 		.dword	__gxx_personality_v0
+ 1274      00000000 
+ 1275              		.ident	"GCC: (Ubuntu 9.4.0-1ubuntu1~20.04) 9.4.0"
+ 1276              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/cczVEagQ.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 new_delete.cpp
+     /tmp/cczVEagQ.s:9      .text:0000000000000000 _Znwm
+     /tmp/cczVEagQ.s:13     .text:0000000000000000 .L0 
+     /tmp/cczVEagQ.s:15     .text:0000000000000000 .L0 
+     /tmp/cczVEagQ.s:16     .text:0000000000000004 .L0 
+     /tmp/cczVEagQ.s:19     .text:000000000000000c .L0 
+     /tmp/cczVEagQ.s:20     .text:000000000000000c .L0 
+     /tmp/cczVEagQ.s:22     .text:0000000000000010 .L0 
+     /tmp/cczVEagQ.s:24     .text:0000000000000010 .L0 
+     /tmp/cczVEagQ.s:25     .text:0000000000000010 .L0 
+     /tmp/cczVEagQ.s:28     .text:0000000000000018 .L0 
+     /tmp/cczVEagQ.s:29     .text:000000000000001c .L0 
+     /tmp/cczVEagQ.s:31     .text:0000000000000020 .L0 
+     /tmp/cczVEagQ.s:32     .text:0000000000000020 .L0 
+     /tmp/cczVEagQ.s:34     .text:0000000000000024 .L0 
+     /tmp/cczVEagQ.s:36     .text:0000000000000028 .L0 
+     /tmp/cczVEagQ.s:42     .text:0000000000000028 _Znam
+     /tmp/cczVEagQ.s:45     .text:0000000000000028 .L0 
+     /tmp/cczVEagQ.s:47     .text:0000000000000028 .L0 
+     /tmp/cczVEagQ.s:48     .text:000000000000002c .L0 
+     /tmp/cczVEagQ.s:51     .text:0000000000000034 .L0 
+     /tmp/cczVEagQ.s:52     .text:0000000000000034 .L0 
+     /tmp/cczVEagQ.s:54     .text:0000000000000038 .L0 
+     /tmp/cczVEagQ.s:56     .text:0000000000000038 .L0 
+     /tmp/cczVEagQ.s:57     .text:0000000000000038 .L0 
+     /tmp/cczVEagQ.s:60     .text:0000000000000040 .L0 
+     /tmp/cczVEagQ.s:61     .text:0000000000000044 .L0 
+     /tmp/cczVEagQ.s:63     .text:0000000000000048 .L0 
+     /tmp/cczVEagQ.s:64     .text:0000000000000048 .L0 
+     /tmp/cczVEagQ.s:66     .text:000000000000004c .L0 
+     /tmp/cczVEagQ.s:68     .text:0000000000000050 .L0 
+     /tmp/cczVEagQ.s:74     .text:0000000000000050 _ZdlPv
+     /tmp/cczVEagQ.s:77     .text:0000000000000050 .L0 
+     /tmp/cczVEagQ.s:1273   .data.rel.local.DW.ref.__gxx_personality_v0:0000000000000000 DW.ref.__gxx_personality_v0
+     /tmp/cczVEagQ.s:81     .text:0000000000000050 .L0 
+     /tmp/cczVEagQ.s:82     .text:0000000000000054 .L0 
+     /tmp/cczVEagQ.s:85     .text:000000000000005c .L0 
+     /tmp/cczVEagQ.s:86     .text:000000000000005c .L0 
+     /tmp/cczVEagQ.s:88     .text:0000000000000060 .L0 
+     /tmp/cczVEagQ.s:90     .text:0000000000000060 .L0 
+     /tmp/cczVEagQ.s:91     .text:0000000000000060 .L0 
+     /tmp/cczVEagQ.s:94     .text:0000000000000068 .L0 
+     /tmp/cczVEagQ.s:95     .text:000000000000006c .L0 
+     /tmp/cczVEagQ.s:97     .text:0000000000000070 .L0 
+     /tmp/cczVEagQ.s:98     .text:0000000000000070 .L0 
+     /tmp/cczVEagQ.s:100    .text:0000000000000074 .L0 
+     /tmp/cczVEagQ.s:102    .text:0000000000000078 .L0 
+     /tmp/cczVEagQ.s:116    .text:0000000000000078 _ZdaPv
+     /tmp/cczVEagQ.s:119    .text:0000000000000078 .L0 
+     /tmp/cczVEagQ.s:123    .text:0000000000000078 .L0 
+     /tmp/cczVEagQ.s:124    .text:000000000000007c .L0 
+     /tmp/cczVEagQ.s:127    .text:0000000000000084 .L0 
+     /tmp/cczVEagQ.s:128    .text:0000000000000084 .L0 
+     /tmp/cczVEagQ.s:130    .text:0000000000000088 .L0 
+     /tmp/cczVEagQ.s:132    .text:0000000000000088 .L0 
+     /tmp/cczVEagQ.s:133    .text:0000000000000088 .L0 
+GAS LISTING /tmp/cczVEagQ.s 			page 7
+
+
+     /tmp/cczVEagQ.s:136    .text:0000000000000090 .L0 
+     /tmp/cczVEagQ.s:137    .text:0000000000000094 .L0 
+     /tmp/cczVEagQ.s:139    .text:0000000000000098 .L0 
+     /tmp/cczVEagQ.s:140    .text:0000000000000098 .L0 
+     /tmp/cczVEagQ.s:142    .text:000000000000009c .L0 
+     /tmp/cczVEagQ.s:144    .text:00000000000000a0 .L0 
+     /tmp/cczVEagQ.s:157    .text:00000000000000a0 _ZdlPvm
+     /tmp/cczVEagQ.s:160    .text:00000000000000a0 .L0 
+     /tmp/cczVEagQ.s:164    .text:00000000000000a0 .L0 
+     /tmp/cczVEagQ.s:165    .text:00000000000000a4 .L0 
+     /tmp/cczVEagQ.s:168    .text:00000000000000ac .L0 
+     /tmp/cczVEagQ.s:169    .text:00000000000000ac .L0 
+     /tmp/cczVEagQ.s:171    .text:00000000000000b0 .L0 
+     /tmp/cczVEagQ.s:173    .text:00000000000000b0 .L0 
+     /tmp/cczVEagQ.s:174    .text:00000000000000b0 .L0 
+     /tmp/cczVEagQ.s:177    .text:00000000000000b8 .L0 
+     /tmp/cczVEagQ.s:178    .text:00000000000000bc .L0 
+     /tmp/cczVEagQ.s:180    .text:00000000000000c0 .L0 
+     /tmp/cczVEagQ.s:181    .text:00000000000000c0 .L0 
+     /tmp/cczVEagQ.s:183    .text:00000000000000c4 .L0 
+     /tmp/cczVEagQ.s:185    .text:00000000000000c8 .L0 
+     /tmp/cczVEagQ.s:198    .text:00000000000000c8 _ZdaPvm
+     /tmp/cczVEagQ.s:201    .text:00000000000000c8 .L0 
+     /tmp/cczVEagQ.s:205    .text:00000000000000c8 .L0 
+     /tmp/cczVEagQ.s:206    .text:00000000000000cc .L0 
+     /tmp/cczVEagQ.s:209    .text:00000000000000d4 .L0 
+     /tmp/cczVEagQ.s:210    .text:00000000000000d4 .L0 
+     /tmp/cczVEagQ.s:212    .text:00000000000000d8 .L0 
+     /tmp/cczVEagQ.s:214    .text:00000000000000d8 .L0 
+     /tmp/cczVEagQ.s:215    .text:00000000000000d8 .L0 
+     /tmp/cczVEagQ.s:218    .text:00000000000000e0 .L0 
+     /tmp/cczVEagQ.s:219    .text:00000000000000e4 .L0 
+     /tmp/cczVEagQ.s:221    .text:00000000000000e8 .L0 
+     /tmp/cczVEagQ.s:222    .text:00000000000000e8 .L0 
+     /tmp/cczVEagQ.s:224    .text:00000000000000ec .L0 
+     /tmp/cczVEagQ.s:226    .text:00000000000000f0 .L0 
+     /tmp/cczVEagQ.s:239    .text:00000000000000f0 .L0 
+     /tmp/cczVEagQ.s:642    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+     /tmp/cczVEagQ.s:1223   .debug_str:0000000000000127 .LASF33
+     /tmp/cczVEagQ.s:1245   .debug_str:00000000000002a2 .LASF34
+     /tmp/cczVEagQ.s:1241   .debug_str:000000000000026c .LASF35
+     /tmp/cczVEagQ.s:5      .text:0000000000000000 .Ltext0
+     /tmp/cczVEagQ.s:236    .text:00000000000000f0 .Letext0
+     /tmp/cczVEagQ.s:1181   .debug_line:0000000000000000 .Ldebug_line0
+     /tmp/cczVEagQ.s:1227   .debug_str:0000000000000204 .LASF0
+     /tmp/cczVEagQ.s:1219   .debug_str:0000000000000108 .LASF1
+     /tmp/cczVEagQ.s:1211   .debug_str:00000000000000da .LASF2
+     /tmp/cczVEagQ.s:1197   .debug_str:0000000000000067 .LASF4
+     /tmp/cczVEagQ.s:1217   .debug_str:00000000000000f6 .LASF3
+     /tmp/cczVEagQ.s:1187   .debug_str:0000000000000023 .LASF5
+     /tmp/cczVEagQ.s:1183   .debug_str:0000000000000000 .LASF6
+     /tmp/cczVEagQ.s:1205   .debug_str:0000000000000097 .LASF7
+     /tmp/cczVEagQ.s:1233   .debug_str:000000000000022d .LASF8
+     /tmp/cczVEagQ.s:1195   .debug_str:0000000000000059 .LASF9
+     /tmp/cczVEagQ.s:1265   .debug_str:0000000000000327 .LASF10
+     /tmp/cczVEagQ.s:1207   .debug_str:00000000000000aa .LASF11
+     /tmp/cczVEagQ.s:1251   .debug_str:00000000000002de .LASF12
+GAS LISTING /tmp/cczVEagQ.s 			page 8
+
+
+     /tmp/cczVEagQ.s:1237   .debug_str:0000000000000253 .LASF13
+     /tmp/cczVEagQ.s:1221   .debug_str:000000000000011b .LASF14
+     /tmp/cczVEagQ.s:1201   .debug_str:0000000000000079 .LASF15
+     /tmp/cczVEagQ.s:1235   .debug_str:000000000000023d .LASF16
+     /tmp/cczVEagQ.s:1185   .debug_str:0000000000000013 .LASF23
+     /tmp/cczVEagQ.s:1213   .debug_str:00000000000000e8 .LASF36
+     /tmp/cczVEagQ.s:1189   .debug_str:000000000000002a .LASF17
+     /tmp/cczVEagQ.s:1261   .debug_str:000000000000031c .LASF18
+     /tmp/cczVEagQ.s:1199   .debug_str:000000000000006e .LASF37
+     /tmp/cczVEagQ.s:1191   .debug_str:000000000000002f .LASF38
+     /tmp/cczVEagQ.s:1257   .debug_str:0000000000000302 .LASF19
+     /tmp/cczVEagQ.s:1247   .debug_str:00000000000002b5 .LASF21
+     /tmp/cczVEagQ.s:1239   .debug_str:0000000000000263 .LASF20
+     /tmp/cczVEagQ.s:1209   .debug_str:00000000000000b9 .LASF22
+     /tmp/cczVEagQ.s:1225   .debug_str:00000000000001eb .LASF24
+     /tmp/cczVEagQ.s:1229   .debug_str:0000000000000211 .LASF39
+     /tmp/cczVEagQ.s:1243   .debug_str:000000000000028f .LASF25
+     /tmp/cczVEagQ.s:1249   .debug_str:00000000000002d6 .LASF27
+     /tmp/cczVEagQ.s:199    .text:00000000000000c8 .LFB5
+     /tmp/cczVEagQ.s:227    .text:00000000000000f0 .LFE5
+     /tmp/cczVEagQ.s:1084   .debug_loc:0000000000000000 .LLST5
+     /tmp/cczVEagQ.s:216    .text:00000000000000e0 .LVL11
+     /tmp/cczVEagQ.s:1231   .debug_str:000000000000021d .LASF26
+     /tmp/cczVEagQ.s:1203   .debug_str:000000000000008f .LASF28
+     /tmp/cczVEagQ.s:158    .text:00000000000000a0 .LFB4
+     /tmp/cczVEagQ.s:186    .text:00000000000000c8 .LFE4
+     /tmp/cczVEagQ.s:1098   .debug_loc:0000000000000039 .LLST4
+     /tmp/cczVEagQ.s:175    .text:00000000000000b8 .LVL9
+     /tmp/cczVEagQ.s:1193   .debug_str:0000000000000052 .LASF29
+     /tmp/cczVEagQ.s:117    .text:0000000000000078 .LFB3
+     /tmp/cczVEagQ.s:145    .text:00000000000000a0 .LFE3
+     /tmp/cczVEagQ.s:1112   .debug_loc:0000000000000072 .LLST3
+     /tmp/cczVEagQ.s:134    .text:0000000000000090 .LVL7
+     /tmp/cczVEagQ.s:1253   .debug_str:00000000000002ee .LASF30
+     /tmp/cczVEagQ.s:75     .text:0000000000000050 .LFB2
+     /tmp/cczVEagQ.s:103    .text:0000000000000078 .LFE2
+     /tmp/cczVEagQ.s:1126   .debug_loc:00000000000000ab .LLST2
+     /tmp/cczVEagQ.s:92     .text:0000000000000068 .LVL5
+     /tmp/cczVEagQ.s:1259   .debug_str:000000000000030c .LASF40
+     /tmp/cczVEagQ.s:1215   .debug_str:00000000000000f0 .LASF41
+     /tmp/cczVEagQ.s:43     .text:0000000000000028 .LFB1
+     /tmp/cczVEagQ.s:69     .text:0000000000000050 .LFE1
+     /tmp/cczVEagQ.s:1140   .debug_loc:00000000000000e4 .LLST1
+     /tmp/cczVEagQ.s:58     .text:0000000000000040 .LVL3
+     /tmp/cczVEagQ.s:1255   .debug_str:00000000000002f5 .LASF31
+     /tmp/cczVEagQ.s:1263   .debug_str:0000000000000321 .LASF32
+     /tmp/cczVEagQ.s:10     .text:0000000000000000 .LFB0
+     /tmp/cczVEagQ.s:37     .text:0000000000000028 .LFE0
+     /tmp/cczVEagQ.s:1154   .debug_loc:000000000000011d .LLST0
+     /tmp/cczVEagQ.s:26     .text:0000000000000018 .LVL1
+     /tmp/cczVEagQ.s:204    .text:00000000000000c8 .LVL10
+     /tmp/cczVEagQ.s:163    .text:00000000000000a0 .LVL8
+     /tmp/cczVEagQ.s:122    .text:0000000000000078 .LVL6
+     /tmp/cczVEagQ.s:80     .text:0000000000000050 .LVL4
+     /tmp/cczVEagQ.s:46     .text:0000000000000028 .LVL2
+     /tmp/cczVEagQ.s:14     .text:0000000000000000 .LVL0
+     /tmp/cczVEagQ.s:240    .debug_info:0000000000000000 .Ldebug_info0
+GAS LISTING /tmp/cczVEagQ.s 			page 9
+
+
+     /tmp/cczVEagQ.s:106    .gcc_except_table:0000000000000000 .LLSDA2
+     /tmp/cczVEagQ.s:147    .gcc_except_table:0000000000000004 .LLSDA3
+     /tmp/cczVEagQ.s:188    .gcc_except_table:0000000000000008 .LLSDA4
+     /tmp/cczVEagQ.s:229    .gcc_except_table:000000000000000c .LLSDA5
+
+UNDEFINED SYMBOLS
+_ZN15MemoryAllocator9mem_allocEm
+_ZN15MemoryAllocator8mem_freeEPv
+__gxx_personality_v0
