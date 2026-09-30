@@ -8,7 +8,7 @@ KERNEL_IMG = kernel
 KERNEL_ASM = kernel.asm
 
 LIBS = \
-  ${DIR_LIBS}/hw.lib \
+  ${DIR_BUILD}/hw.lib \
   ${DIR_LIBS}/console.lib \
 
 # riscv64-unknown-elf- or riscv64-linux-gnu-
@@ -31,18 +31,18 @@ endif
 
 QEMU = qemu-system-riscv64
 
-AS      = ${TOOLPREFIX}as
+AS      = ${TOOLPREFIX}gcc
 CC      = ${TOOLPREFIX}gcc
 CXX     = ${TOOLPREFIX}g++
 LD      = ${TOOLPREFIX}ld
 OBJCOPY = ${TOOLPREFIX}objcopy
 OBJDUMP = ${TOOLPREFIX}objdump
 
-ASFLAGS = -ggdb -march=rv64ima -mabi=lp64
+ASFLAGS = -ggdb -march=rv64ima_zicsr -mabi=lp64
 
 CFLAGS  = -Wall -Werror -Og -ggdb
 CFLAGS += -nostdlib
-CFLAGS += -march=rv64ima -mabi=lp64 -mcmodel=medany -mno-relax
+CFLAGS += -march=rv64ima_zicsr -mabi=lp64 -mcmodel=medany -mno-relax
 CFLAGS += -fno-omit-frame-pointer -ffreestanding -fno-common
 CFLAGS += $(shell ${CC} -fno-stack-protector -E -x c /dev/null >/dev/null 2>&1 && echo -fno-stack-protector)
 CFLAGS += ${DEBUG_FLAG}
@@ -59,7 +59,7 @@ endif
 
 CXXFLAGS  = -Wall -Werror -Og -ggdb
 CXXFLAGS += -nostdlib -std=c++11
-CXXFLAGS += -march=rv64ima -mabi=lp64 -mcmodel=medany -mno-relax
+CXXFLAGS += -march=rv64ima_zicsr -mabi=lp64 -mcmodel=medany -mno-relax
 CXXFLAGS += -fno-omit-frame-pointer -ffreestanding -fno-common
 CXXFLAGS += -fno-rtti -fno-threadsafe-statics
 #CXXFLAGS += -I./${DIR_LIBS} -I./${DIR_INC}
@@ -87,6 +87,9 @@ vpath %.cpp $(sort $(dir ${SOURCES_CPP}))
 
 all: ${KERNEL_IMG}
 
+${DIR_BUILD}/hw.lib: ${DIR_LIBS}/hw.lib | ${DIR_BUILD}
+	${OBJCOPY} --set-section-flags .entry_os=alloc,load,readonly,code,contents ${<} ${@}
+
 ${KERNEL_IMG}: ${LIBS} ${OBJECTS} ${LDSCRIPT} | ${DIR_BUILD}
 	${LD} ${LDFLAGS} -o ${@} ${OBJECTS} ${LDLIBS} ${LDLIBS}
 	${OBJDUMP} --source ${KERNEL_IMG} > ${KERNEL_ASM}
@@ -104,7 +107,7 @@ ${DIR_BUILD}/%.o: %.s Makefile | ${DIR_BUILD}
 	${AS} -c ${ASFLAGS} -o ${@} ${<}
 
 ${DIR_BUILD}:
-	mkdir ${@}
+	mkdir -p ${@}
 
 clean:
 	rm -f *.tex *.dvi *.idx *.aux *.log *.ind *.ilg
